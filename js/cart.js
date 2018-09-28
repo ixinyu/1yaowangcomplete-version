@@ -1,5 +1,10 @@
 ;(function(){
 	$(function(){	
+		//退出事件
+		$(".tuichu").click(function(){
+			removeCookie("token");
+		})
+		console.log("aa");
 		$token=getCookie("token");
 		var count1=0;
 		$.get("http://47.104.244.134:8080/cartlist.do?token="+$token+"",function(data){

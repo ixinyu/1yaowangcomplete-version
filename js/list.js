@@ -91,6 +91,13 @@
 					</div>`;
 				})
 				$(".br-list").html(str);	
+				
+				$(".br-fo").click(function(){
+				var $index=$(this).data().id;
+				console.log($index);
+				location.href="details.html";
+     			setCookie("list-id",$index,7);			
+			    })
 			 })
 		}
 		

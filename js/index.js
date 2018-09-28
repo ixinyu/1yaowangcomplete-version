@@ -1,7 +1,11 @@
 ;(function(){
 	$(function(){
 		$banner=$(".ban-nav");
-
+		
+		//退出
+		$(".tuichu").click(function(){
+			removeCookie("token");
+		})
 		//楼梯布局
 		var $num=$(".usual").length;
 		var ss="";
@@ -210,12 +214,10 @@
 	$(".lg-btm ul").on("click","li",function(){
 		location.href="html/list.html";
 	})
-	$(".ban-cen").click(function(){
-		location.href="html/list.html";
-	})
 	$(".new").children().click(function(){
 		location.href="html/list.html";
 	})
+	
 	$(".docyao").children().click(function(){
 		location.href="html/list.html";
 	})

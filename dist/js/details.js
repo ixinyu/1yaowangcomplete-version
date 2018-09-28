@@ -2,6 +2,9 @@
 	$(function(){
 		var count1=0;
 		var count=0;
+		var $detid=getCookie("list-id");
+		console.log(getCookie("token"));
+		console.log(Boolean(undefined));
 		$(".head").load("../html/header.html");
 		$(".fo").load("../html/footer.html");
 		//头部购物车
@@ -62,45 +65,11 @@
 				$(".oul-two").hide();
 			})
 			
-			//放大镜
-			$zoom=$(".zoom");
-			$bigimg=$(".bigimg"); //大图区域
-			$bigpic=$(".bigpic");  //大图
-			$mtlf=$(".mt-lf");
-			$mltop=$(".ml-top");
-			$mltop.hover(function(){
-				$zoom.show();
-				$bigimg.show();				
-			},function(){
-				$zoom.hide();
-				$bigimg.hide();
-			})
-			$mltop.mousemove(function(e){
-				var e=e;
-				var x=e.pageX-$mltop.offset().left-$zoom.outerWidth()/2;
-				var y=e.pageY-$mltop.offset().top-$zoom.outerHeight()/2;				
-				if(x<=0){
-					x=0;
-				}
-				if(x>=$mltop.outerWidth()-$zoom.outerWidth()){
-					x=$mltop.outerWidth()-$zoom.outerWidth();
-				}				
-				if(y<=0){
-					y=0;
-				}
-				if(y>=$mltop.outerHeight()-$zoom.innerHeight()){
-					y=$mltop.outerHeight()-$zoom.innerHeight();
-				}
-				$(".zoom").css({"left":x,"top":y});
-				$bigpic.css({
-					"left":-$zoom.position().left/$mltop.outerWidth()*$bigpic.width(),
-					"top":-$zoom.position().top/$mltop.outerHeight()*$bigpic.height()
-				});
-			})
+			
 		
 		//根据不同的id更换不同的图片
 		
-		var $detid=getCookie("list-id");
+		
 		$.get("http://47.104.244.134:8080/goodsbyid.do?id="+$detid+"",function(data){
 			data=data;
 //			console.log(data);
@@ -164,7 +133,7 @@
 					</div>
 				</div>
 				<div class="mt-rig">
-					<img src="${data.picurl}" alt="" />
+					<img src="../imgs/banner1.jpg" alt="" />
 				</div>
 				`;
 				$(".main-top").html(str);
@@ -174,37 +143,38 @@
 				$(".mlt").attr({"src":$(this).attr("src")});
 			})
 			
-			//加入购物车事件
-//		刷新时显示购物车的数量
-				
-		if(getCookie("cart")){
-			var obj = JSON.parse(getCookie("cart"));//将json字符串转换成对象的			
-		}else{
-			var obj={};
-		}
-		for(var i in obj){
-			if(i==$detid){
-				count1=obj[i];
-			}
-		}
-		$(".shuzi").val(count1);
-		//购物车按钮
-		var $token=getCookie("token");
-		if($token=="undefined"){
-			alert("请先登录再加购物车(⊙o⊙)哦")
-		}else{
+			//刷新页面时框中的数字
 			if(getCookie("cart")){
 			var obja=JSON.parse(getCookie("cart"));
 			}else{
 				var obja={};
 			}
 			for(var i in obja){
-				count+=obja[i];
+				if(i==$detid){
+					count1=obja[i];
+				}
+			}
+			$(".shuzi").val(count1);
+//		刷新时显示购物车的数量
+
+			if(getCookie("cart")){
+			var obja=JSON.parse(getCookie("cart"));
+			}else{
+				var obja={};
+			}
+			for(var i in obja){
+				if(i==$detid){
+					count=obja[i];
+				}
 			}
 			$(".xiaoshu").html(count);
 			
-			
-			$(".cart-btn").click(function(){
+		//购物车按钮	
+		$(".cart-btn").click(function(){
+		  var $token=getCookie("token");
+		  if(!$token){
+				alert("请先登录再加购物车(⊙o⊙)哦")
+		  }else{
 			$(this).children(".tankuang").show();			
 			var $gid=$(this).data().id;			
 			var num=$(".shuzi").val();
@@ -216,7 +186,7 @@
 			}
 			$(".cart-btn>em").show();
 //			将该数据存到cookie中
-			var $lid=getCookie("list-id");
+			/*var $lid=getCookie("list-id");
 			console.log($lid);
 			if(getCookie("cart")){
 				var obj1=JSON.parse(getCookie("cart"));
@@ -233,9 +203,11 @@
 			setCookie("cart",liobj,3);
 			$(".xiaoshu").html(++count);
 			
-			$(".jian").html($(".shuzi").val());
+			$(".jian").html($(".shuzi").val());*/
 			
+			}			
 		 })
+		
 			//弹框隐藏事件
 			$(".cart-btn").mouseout(function(){
 				$(".cart-btn>em").hide();
@@ -290,7 +262,43 @@
 				setCookie("cart",liobj,3);
 				return count;
 			}
-		}
+			
+			//放大镜
+			$zoom=$(".zoom");
+			$bigimg=$(".bigimg"); //大图区域
+			$bigpic=$(".bigpic");  //大图
+			$mtlf=$(".mt-lf");
+			$mltop=$(".ml-top");
+			$mltop.hover(function(){
+				$zoom.show();
+				$bigimg.show();				
+			},function(){
+				$zoom.hide();
+				$bigimg.hide();
+			})
+			$mltop.mousemove(function(e){
+				var e=e;
+				var x=e.pageX-$mltop.offset().left-$zoom.outerWidth()/2;
+				var y=e.pageY-$mltop.offset().top-$zoom.outerHeight()/2;				
+				if(x<=0){
+					x=0;
+				}
+				if(x>=$mltop.outerWidth()-$zoom.outerWidth()){
+					x=$mltop.outerWidth()-$zoom.outerWidth();
+				}				
+				if(y<=0){
+					y=0;
+				}
+				if(y>=$mltop.outerHeight()-$zoom.innerHeight()){
+					y=$mltop.outerHeight()-$zoom.innerHeight();
+				}
+				$(".zoom").css({"left":x,"top":y});
+				$bigpic.css({
+					"left":-$zoom.position().left/$mltop.outerWidth()*$bigpic.width(),
+					"top":-$zoom.position().top/$mltop.outerHeight()*$bigpic.height()
+				});
+			})
+
 	 })
 		
 

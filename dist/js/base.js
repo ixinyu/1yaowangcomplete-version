@@ -6,9 +6,10 @@
 		$(".car").click(function(){
 			location.href="../html/cart.html";
 		})
-		/*$(".car").mouseover(function(){
-			
-		})*/
+		//退出
+		$(".tuichu").click(function(){
+			removeCookie("token");
+		})
 	
 		
 		$(".lg-btm").click(function(){
