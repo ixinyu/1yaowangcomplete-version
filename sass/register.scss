@@ -1,0 +1,102 @@
+.w{
+    width:990px;
+    margin: 0 auto;
+}
+.box{
+    padding-top:16px;
+    background: url(../imgs/zhu.jpg) no-repeat right bottom;
+    box-shadow: -1px 1px 10px #EFEFEF, -1px 10px 10px #EFEFEF;
+    border:#e6e6e6 1px solid{
+        top:2px solid #73BBE4;
+    }
+    
+}
+
+.reg span:nth-child(1){
+    font-size: 22px;
+    margin-left: 20px;
+}
+.reg span:nth-child(2){
+    font-size: 14px;
+    color:#666;
+    float: right;
+    margin-right: 20px;
+    a{
+        color: #0099F1;
+    }
+}
+form li{
+    margin-top: 20px;
+    padding-right: 30px;
+    width:340px;
+    height: 38px;
+    margin-left: 100px;
+    border:1px solid #ccc;
+    position: relative;
+    input{
+        border:0;
+        width: 300px;
+        height: 36px;
+        text-indent: 10px;
+    }
+    em{
+        display: block;
+        width: 16px;
+        height: 16px;
+        float: right;
+        background:#85C02E;
+        border-radius: 50%;
+        margin-top: 10px;
+        display: none;
+        }
+        span{
+            position: absolute;
+            right: 0px;
+            margin-top: 10px;
+        }
+}
+em .icon-31xuanze{
+            color:#fff;
+        }
+form li:nth-child(4),li:nth-child(5){
+    border:0px;
+    border-bottom: 1px solid #ccc;
+    input{
+    height: 16px;
+    width: 16px;
+}
+    span{
+        margin-right: 20px;
+    }
+}
+ 
+form li:last-child {
+    border:0;
+    input{
+    background: #0099f1;
+    border:0;
+    color:#fff;
+    font-size: 20px;
+    width: 372px;
+}
+}
+
+.regwrap p{
+    margin-left: 100px;
+}
+.tip{
+    margin-left: 100px;
+    li{
+        float: left;
+            .iconfont{
+                font-size: 40px;
+                margin-right: 16px;
+                color: #0099f1;
+            }
+      }
+}
+
+.footer{
+    text-align: center;
+    margin: 40px 0 20px;
+}

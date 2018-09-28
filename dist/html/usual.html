@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/index.css"/>
+		<link href="https://cdn.bootcss.com/Swiper/4.3.0/css/swiper.min.css" rel="stylesheet">
+	</head>
+	<body>
+		
+		<div class="usual w clean usual2">
+	   	  <div class="us-lf">
+	   	  	<table cellspacing="0" cellpadding="0" style="border-collapse: collapse;">
+	   	  		<tr><td colspan="2">3F 专科用药</td></tr>
+	   	  		<tr>
+	   	  			<td>补血补气</td>
+	   	  			<td>减肥瘦身</td>
+	   	  		</tr>
+	   	  		<tr>
+	   	  			<td>补血补气</td>
+	   	  			<td>减肥瘦身</td>
+	   	  		</tr>
+	   	  		<tr>
+	   	  			<td>补血补气</td>
+	   	  			<td>减肥瘦身</td>
+	   	  		</tr>
+	   	  		<tr>
+	   	  			<td>补血补气</td>
+	   	  			<td>减肥瘦身</td>
+	   	  		</tr>
+	   	  		<tr>
+	   	  			<td>补血补气</td>
+	   	  			<td>减肥瘦身</td>
+	   	  		</tr>
+	   	  		<tr>
+	   	  			<td>补血补气</td>
+	   	  			<td>减肥瘦身</td>
+	   	  		</tr>
+	   	  		<tr>
+	   	  			<td>补血补气</td>
+	   	  			<td>减肥瘦身</td>
+	   	  		</tr>
+	   	  		<tr>
+	   	  			<td>补血补气</td>
+	   	  			<td>减肥瘦身</td>
+	   	  		</tr>	   	  		
+	   	  	</table>
+	   	  </div>
+	   	  <div class="us-rig clean">
+	   	  	 <div class="ur-top clean">
+	   	  	 	<div class="scon">
+					<div class="swiper-container">
+					  <div class="swiper-wrapper">
+					    <div class="swiper-slide"><img src="imgs/ut1.jpg" alt="" /></div>
+					    <div class="swiper-slide"><img src="imgs/us1.jpg" alt="" /></div>
+					    <div class="swiper-slide"><img src="imgs/uss1.jpg" alt="" /></div>
+					  </div>
+					</div>
+				</div>
+	   	  	 	<!--<img src="../imgs/a1.jpg" alt="" />-->
+	   	  	 	<img src="imgs/a2.jpg"/>
+	   	  	 	<img src="imgs/a3.jpg"/>
+	   	  	 </div>
+	   	  	 <div class="ur-btm clean">
+	   	  	 	<!--<div class="ubtm">
+	   	  	 		<img src="imgs/ust1.jpg" alt="" />
+	   	  	 		<p><span>[保心良药]</span><span>益安宁丸</span></p>
+	   	  	 		<span>￥：780</span>
+	   	  	 	</div>-->
+	   	  	 </div>
+	   	  </div> 	
+	   </div>
+	   
+	   
+	   <script src="js/jquery-1.11.0.js"></script>
+	   <script src="https://cdn.bootcss.com/Swiper/4.3.0/js/swiper.min.js"></script>
+	   <script src="js/index.js"></script>
+	   <script>
+	   		$.ajax({
+		type:"get",
+		url:"http://47.104.244.134:8080/goodsbytid.do?tid=13&page=1&limit=5",
+		async:true,
+		success:function(data){
+			data=data.data;			
+			var str="";
+			for(let i=0;i<data.length;i++){
+				data[i].price=parseInt(data[i].price/100);
+				data[i].name=data[i].name.substr(0,20);
+				str+=`<div class="ubtm">
+	   	  	 		<img src=${data[i].picurl} alt="" />
+	   	  	 		<p><span>${data[i].name}</span></p>
+	   	  	 		<span>￥：${data[i].price}</span>
+	   	  	 	</div>`;
+			}
+			$(".ur-btm").html(str);
+		}
+	});
+	   </script>
+	</body>
+</html>
